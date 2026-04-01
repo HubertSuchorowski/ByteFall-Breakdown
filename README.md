@@ -11,19 +11,19 @@ Jako **Junior Unity Developer** oraz Kapitan Zespołu, byłem odpowiedzialny za 
 * **Optymalizacja (Object Pooling):** Wykorzystanie wzorca projektowego **UnityEngine.Pool** do zarządzania falami przeciwników i pociskami, co pozwoliło na zachowanie wysokiej wydajności (FPS) przy dużej skali potyczek.
 * **Architektura Data-Driven:** Zastosowanie **Scriptable Objects** do konfiguracji balansu gry, statystyk broni oraz definicji fal przeciwników, co umożliwiło łatwą modyfikację parametrów bez ingerencji w kod źródłowy.
 
-## 🚀 Technologie
+## Technologie
 * **Silnik:** Unity 6.3+
 * **Język:** C#
 * **AI/API:** FastAPI (Python), Google Gemini API, ElevenLabs TTS
 * **Narzędzia:** Plastic SCM (Kontrola wersji), NavMesh, Object Pooling API
 
-## 📂 Struktura Repozytorium
+## Struktura Repozytorium
 To repozytorium zawiera wybrane skrypty mojego autorstwa, prezentujące architekturę systemów gry:
 * `/Scripts/AI/` – Logika przeciwników i integracja z API Gemini.
 * `/Scripts/Systems/` – System fal, Object Pooling oraz WaveManager.
 * `/Scripts/Data/` – Definicje Scriptable Objects.
 
-## 📝 Dokumentacja
+## Dokumentacja
 Pełna dokumentacja projektowa (Breakdown) zawierająca opisy koncepcyjne oraz graficzne znajduje się w folderze `/Docs`.
 
 ---
