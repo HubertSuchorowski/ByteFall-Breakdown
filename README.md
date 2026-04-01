@@ -26,6 +26,7 @@ To repozytorium zawiera wybrane skrypty mojego autorstwa, prezentujące architek
 
 ## Dokumentacja
 Pełna dokumentacja projektowa (Breakdown) zawierająca opisy koncepcyjne oraz graficzne znajduje się w folderze `/Docs`.
+Nagranie prezentujące projekt i rozrykwkę znajduję się pod linkiem: https://www.youtube.com/watch?v=OcnLoDzWoaQ
 
 ---
 Projekt "ByteFall" został przygotowany na konkurs **Platynowy Indeks Politechniki Świętokrzyskiej 2026**. 
