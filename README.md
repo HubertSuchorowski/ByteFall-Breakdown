@@ -20,7 +20,8 @@ Jako **Junior Unity Developer** oraz Kapitan Zespołu, byłem odpowiedzialny za 
 ## Struktura Repozytorium
 To repozytorium zawiera wybrane skrypty mojego autorstwa, prezentujące architekturę systemów gry:
 * `/Scripts/AI/` – Logika przeciwników i integracja z API Gemini.
-* `/Scripts/Systems/` – System fal, Object Pooling oraz WaveManager.
+* `/Scripts/Systems/Wave/` – System fal, Object Pooling oraz WaveManager.
+* `/Scripts/Systems/Player/` – System gracza oraz PlayerManager.
 * `/Scripts/Data/` – Definicje Scriptable Objects.
 
 ## Dokumentacja
