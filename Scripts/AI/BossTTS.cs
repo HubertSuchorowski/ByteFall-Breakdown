@@ -1,39 +1,45 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
-using Unity.VisualScripting;
 
 public class BossTTS : MonoBehaviour
 {
-    public bool isSpeaking = true;
+    public bool isSpeaking = false;
+    public float cooldown = 15f;
+    private float timer = 0f;
+    private Boss bossComponent;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        bossComponent = GetComponentInChildren<Boss>(true);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        
         if (other.CompareTag("Player"))
         {
-            GetComponentInChildren<Boss>().enabled = false;
+            if (bossComponent != null) bossComponent.enabled = false;
 
             string dialog = "Wszedłeś do mej komnaty, śmiałku. Przygotuj się na walkę z potężnym bossem!";
             string url = "https://bytefalltts-production.up.railway.app/generate?dialog=" + UnityWebRequest.EscapeURL(dialog);
-            StartCoroutine(GetAudioClip(url));
-            Debug.Log("BossTTS: " + dialog);
-            GetComponent<Collider>().enabled = false;
-
             
+            StartCoroutine(GetAudioClip(url));
+            
+            Collider col = GetComponent<Collider>();
+            if (col != null) col.enabled = false;
         }
-        
     }
-    
+
     IEnumerator GetAudioClip(string url)
     {
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
         {
             www.method = UnityWebRequest.kHttpVerbPOST;
-
             yield return www.SendWebRequest();
 
-            if (www.result == UnityWebRequest.Result.ConnectionError ||
-                www.result == UnityWebRequest.Result.ProtocolError)
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError("BossTTS Error: " + www.error);
             }
@@ -41,36 +47,46 @@ public class BossTTS : MonoBehaviour
             {
                 AudioClip myClip = DownloadHandlerAudioClip.GetContent(www);
                 myClip.name = "BossTTS";
-                AudioSource audioSource = GetComponent<AudioSource>();
-                audioSource.clip = myClip;
-                audioSource.Play();
-                isSpeaking = true;
+                if (audioSource != null)
+                {
+                    audioSource.clip = myClip;
+                    audioSource.Play();
+                    isSpeaking = true;
+                    timer = 0f;
+                }
             }
         }
     }
-    float timer = 0f;
-    public float cooldown = 15f;
+
     private void Update()
     {
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAA");
-        if (GetComponentInChildren<Boss>().gameObject.activeSelf == true)
+        if (bossComponent == null)
         {
-            if (isSpeaking == true)
-                    {
-                        GetComponentInChildren<Boss>().enabled = false;
-                        timer += Time.deltaTime;
-                        if (timer >= cooldown)
-                        {
-                            isSpeaking = false;
-                        }
-                    }
-                    else if (isSpeaking == false) {
-                            Debug.Log("boss enabled");
-                            GetComponentInChildren<Boss>().enabled = true; }
+            bossComponent = GetComponentInChildren<Boss>(true);
         }
-        
-    }
 
+        if (bossComponent != null && bossComponent.gameObject.activeInHierarchy)
+        {
+            if (isSpeaking)
+            {
+                bossComponent.enabled = false;
+                timer += Time.deltaTime;
+                if (timer >= cooldown)
+                {
+                    isSpeaking = false;
+                    timer = 0f;
+                }
+            }
+            else
+            {
+                if (!bossComponent.enabled)
+                {
+                    bossComponent.enabled = true;
+                }
+            }
+        }
+    }
+}
 
 
 
