@@ -3,10 +3,10 @@
 **ByteFall** to dynamiczna gra zręcznościowa typu roguelite utrzymana w stylistyce retro. Projekt został stworzony przez zespół **SzpontGames** na konkurs „Platynowy Indeks Politechniki Świętokrzyskiej 2026”.
 
 ## 🛠 Mój wkład w projekt (Hubert Suchorowski)
-Jako **Junior Unity Developer** oraz Kapitan Zespołu, byłem odpowiedzialny za zaprojektowanie i zaimplementowanie wszystkich kluczowych systemów rozgrywki oraz architektury technicznej (z wyłączeniem generacji terenu, systemu walki i animacji).
+Jako **Junior Unity Developer** oraz Lider zespołu, byłem odpowiedzialny za zaprojektowanie i zaimplementowanie wszystkich kluczowych systemów rozgrywki oraz architektury technicznej (z wyłączeniem generacji terenu, systemu walki i animacji).
 
 ### Kluczowe systemy:
-* **System Walki i AI:** Implementacja przeciwników oparta na technologii **NavMesh**, zapewniająca płynną nawigację w dynamicznie zmieniającym się środowisku.
+* **System Fal i AI:** Implementacja przeciwników oparta na technologii **NavMesh**, zapewniająca płynną nawigację w dynamicznie zmieniającym się środowisku.
 * **Integracja AI (LLM & TTS):** Stworzenie  bossa AI z pełną integracją **REST API**. System komunikuje się z serwerem (FastAPI), wykorzystując model **Google Gemini 2.5 Flash** do generowania dialogów oraz **ElevenLabs** do syntezy mowy w czasie rzeczywistym.
 * **Optymalizacja (Object Pooling):** Wykorzystanie wzorca projektowego **UnityEngine.Pool** do zarządzania falami przeciwników i pociskami, co pozwoliło na zachowanie wysokiej wydajności (FPS) przy dużej skali potyczek.
 * **Architektura Data-Driven:** Zastosowanie **Scriptable Objects** do konfiguracji balansu gry, statystyk broni oraz definicji fal przeciwników, co umożliwiło łatwą modyfikację parametrów bez ingerencji w kod źródłowy.
